@@ -1,0 +1,37 @@
+name: run_on_schedule
+
+on:
+  pull_request:
+    branches:
+      - main
+
+
+# env:
+#   DBT_PROFILES_DIR: ./dbt/
+#   DBT_USERNAME: ${{ secrets.DBT_USERNAME }}
+#   DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+#   SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+#   SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
+#   SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+#   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#   AWS_EC2_METADATA_DISABLED: true
+
+
+jobs:
+  run:
+    name: run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@main
+
+      - name: Install dependencies
+        run: |
+          apt install cowsay
+
+      - name: Run and test script
+        id: build
+        run: |
+          cowsay 'hello from actions'
