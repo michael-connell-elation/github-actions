@@ -1,4 +1,4 @@
-name: run_on_schedule
+name: run_on_pull_request
 
 on:
   pull_request:
@@ -29,7 +29,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt install cowsay
+          sudo apt install cowsay
 
       - name: Run and test script
         id: build
